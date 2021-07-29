@@ -1,0 +1,59 @@
+<!--
+Copyright (c) 2020 LG Electronics Inc.
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Example Web App</title>
+<style type="text/css">
+    body {
+        width: 100%;
+        height: 100%;
+        background-color:#202020;
+    }
+    div {
+        position:absolute;
+        height:100%;
+        width:100%;
+        display: table;
+    }
+    h1 {
+        display: table-cell;
+        vertical-align: middle;
+        text-align:center;
+        color:#FFFFFF;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+<script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+    window.onload = function() {
+
+        var socket = io.connect('http://3.35.107.196:5000');
+
+        socket.on("connection", function(){
+            console.log("connected");
+        });
+
+        socket.on("example", function(data) {
+            document.getElementById("txt_msg").innerHTML = data;
+        })
+    }
+</script>
+
+<script>
+
+</script>
+
+</head>
+<body>
+    <div>
+        <h1 id="txt_msg">Hello, Web Application!!</h1>
+    </div>
+</body>
+</html>
