@@ -18,13 +18,13 @@ io.on("connection", function(socket) {
     socket.on("finger_number", function(data){
         finger = data.finger_number;
         socket.emit("finger_number",{
-            finger : data.finger_number
+            fingerNum : finger
         });
     })
 
 
     socket.on("disconnection",function(reason){
-        console.log(`disconnect id : ${socket.id}`);
+        console.log(`disconnect id : ${socket.id} reason : ${reason}`);
         
     })
 });
