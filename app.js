@@ -9,6 +9,23 @@ var server = app.listen(port, () => {
 
 const socketServer = io(server);
 
+let finger = 0;
+
 socketServer.on("connection", function(socket) {
     console.log("connect client " + socket.id);
+    
+    socket.on("finger_number", function(data){
+        finger = data.finger_number;
+        socket.emit("finger_number",{
+            finger : data.finger_number
+        });
+    })
+
+
+    socket.on("disconnection",function(reason){
+        console.log(`disconnect id : ${socket.id}`);
+        
+    })
 });
+
+
