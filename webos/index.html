@@ -9,6 +9,10 @@ SPDX-License-Identifier: Apache-2.0
 <head>
 <title>Example Web App</title>
 <style type="text/css">
+    *{
+    background-color: white;
+}
+   
     body {
         width: 100%;
         height: 100%;
@@ -24,7 +28,7 @@ SPDX-License-Identifier: Apache-2.0
         display: table-cell;
         vertical-align: middle;
         text-align:center;
-        color:#FFFFFF;
+        color:black;
     }
 </style>
 
@@ -33,8 +37,26 @@ SPDX-License-Identifier: Apache-2.0
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
     window.onload = function() {
+        var finger1 = 'Open/Close the window';
+        var finger2 = 'Turn on/off the light';
+        var finger3 = 'Emergency call';
 
         var socket = io.connect('http://3.35.107.196:5000');
+        
+         function finger_rend(finger){
+            if(finger==1){
+                document.getElementById("finger").innerHTML = finger1;
+            }
+            else if(finger ==2){
+                document.getElementById("finger").innerHTML = finger2;
+            }
+            else if(finger==3){
+                document.getElementById("finger").innerHTML = finger3;
+            }
+            else{
+                document.getElementById("finger").innerHTML = 'default';
+            }
+        }
 
         socket.on("connection", function(){
             console.log("connected");
@@ -42,6 +64,12 @@ SPDX-License-Identifier: Apache-2.0
 
         socket.on("example", function(data) {
             document.getElementById("txt_msg").innerHTML = data;
+        })
+         socket.on("finger_number",function(data){
+            var finger = 0;
+            finger = 1;
+            finger_rend(finger);
+
         })
     }
 </script>
@@ -54,6 +82,7 @@ SPDX-License-Identifier: Apache-2.0
 <body>
     <div>
         <h1 id="txt_msg">Hello, Web Application!!</h1>
+        <h1 id="finger">finger</h1>
     </div>
 </body>
 </html>
