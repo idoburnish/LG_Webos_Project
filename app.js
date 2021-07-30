@@ -22,6 +22,8 @@ io.on("connection", function(socket) {
         });
     })
 
+    socket.emit("finger_number", "dd");
+
 
     socket.on("disconnection",function(reason){
         console.log(`disconnect id : ${socket.id} reason : ${reason}`);
