@@ -5,7 +5,6 @@ from shapely.geometry import Polygon
 import socket
 import sys
 import socketio
-#import requests
 import json
 
 # cascade를 사용하여 얼굴검출하여 얼굴부분 제거
