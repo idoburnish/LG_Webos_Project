@@ -61,7 +61,7 @@ elif realfinger == '2':
 #     realfinger=realfinger.encode('utf-8')
 #     arduino.write(realfinger) 
     servoMotor(18)
-    count += 1
+    windowCount += 1
     
 elif realfinger == '3':
     realfinger=realfinger.encode('utf-8')
