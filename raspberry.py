@@ -60,7 +60,7 @@ if realfinger == '1':
 elif realfinger == '2':
 #     realfinger=realfinger.encode('utf-8')
 #     arduino.write(realfinger) 
-    servoMotor(pin)
+    servoMotor(18)
     count += 1
     
 elif realfinger == '3':
