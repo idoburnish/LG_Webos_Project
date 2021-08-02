@@ -9,30 +9,46 @@ server.listen(port, () => {
 });
 
 let finger = 0;
-
-// app.get("/", function(req, res) {
-//     console.log('from opencv (POST)');
-//     var temp = req.body
-//     console.log(temp);
-// })
+var window_count = 0;
+var LED_count = 0;
 
 io.on("connection", function(socket) {
-    console.log("connect client " + socket.id);
-
-    socket.emit("example", "example from server");
+    console.log("[connect client] " + socket.id);
     
     socket.on("finger_number", function(data){
         console.log("finger_number socket connect");
-        console.log("data: " + data);
         console.log("data.numbers: " + JSON.parse(data).numbers);
-        finger = data.finger_number;
-        socket.emit("finger_number",{
-            fingerNum : finger
-        });
+
+        finger = JSON.parse(data).numbers;
+
+        if (finger == 1) {  // 손가락 1일 경우
+            window_count += 1;
+            var status = window_count % 2;  // window status: 1(open)/0(close)
+            console.log("finger: " + finger + " status: " + status);
+
+            socket.emit("finger_one", {
+                fingerNum : finger,
+                status: status
+            });
+        }
+        else if (finger == 2) { //손가락 2일 경우
+            LED_count += 1;
+            var status = LED_count % 2; // LED status: 1(on)/0(off)
+            console.log("finger: " + finger + " status: " + status);
+
+            socket.emit("finger_two", {
+                fingerNum : finger,
+                status: status
+            });
+        }
+        else if (finger == 3) {
+            console.log("finger: " + finger);
+
+            socket.emit("finger_three", {
+                fingerNum : finger
+            });
+        }
     })
-
-    socket.emit("finger_number", "dd");
-
 
     socket.on("disconnection",function(reason){
         console.log(`disconnect id : ${socket.id} reason : ${reason}`);
