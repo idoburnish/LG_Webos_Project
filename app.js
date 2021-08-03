@@ -9,24 +9,22 @@ server.listen(port, () => {
 });
 
 let finger = 0;
-var window_count = 0;
-var LED_count = 0;
+var window_count = -1;
+var LED_count = -1;
 
-io.on("connection", function(socket) {
+io.sockets.on("connection", function(socket) {
     console.log("[connect client] " + socket.id);
     
     socket.on("finger_number", function(data){
         console.log("finger_number socket connect");
         console.log("data.numbers: " + JSON.parse(data).numbers);
-
         finger = JSON.parse(data).numbers;
 
         if (finger == 1) {  // 손가락 1일 경우
             window_count += 1;
-            var status = window_count % 2;  // window status: 1(open)/0(close)
+            var status = window_count % 2 ;  // window status: 1(open)/0(close)
             console.log("finger: " + finger + " status: " + status);
-
-            socket.emit("finger_one", {
+            io.sockets.emit("finger_send", {
                 fingerNum : finger,
                 status: status
             });
@@ -35,19 +33,25 @@ io.on("connection", function(socket) {
             LED_count += 1;
             var status = LED_count % 2; // LED status: 1(on)/0(off)
             console.log("finger: " + finger + " status: " + status);
-
-            socket.emit("finger_two", {
+            io.sockets.emit("finger_send", {
                 fingerNum : finger,
                 status: status
             });
         }
         else if (finger == 3) {
-            console.log("finger: " + finger);
-
-            socket.emit("finger_three", {
-                fingerNum : finger
+            var status = 0 ;
+            console.log("finger: " + finger + " status: " + status);
+            io.sockets.emit("finger_send", {
+                fingerNum : finger,
+                status: status
             });
         }
+
+        console.log("웨우");
+    });
+
+    socket.on("test", function(data) {
+        console.log("test: " + data);
     })
 
     socket.on("disconnection",function(reason){
