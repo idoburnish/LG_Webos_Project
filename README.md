@@ -1,6 +1,6 @@
 ## :checkered_flag: 2021 LG Webos Internship :trophy:
 
-## 🏡HOUSE IN HAND 🖐️🏠 ##  
+## 🏡 HOUSE IN HAND 🖐️🏠 ##  
   몸이 불편한 이들을 위한 손 동작 인식을 사용한 홈 디바이스 제어 시스템
   
   
@@ -25,9 +25,15 @@ Based on the OpenCV library, we will implement a system that recognizes the numb
  -   finger three : emergency call to family or 119
  
  
- 
- 
 ## :computer: Component
+
+ - Socket io 통신을 위한 AWS server
+ - WebOS 설치 RaspberryPi 4
+ - 기능 작동 여부 알림을 위한 Web App
+ - 모듈 제어를 위한 RaspberryPi 4
+ - Server Motor, LED, breadboard
+ - Webcam
+
 
 ## 📁 Usage library
 
