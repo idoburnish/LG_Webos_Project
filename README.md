@@ -1,6 +1,6 @@
 ## :checkered_flag: 2021 LG Webos Internship :trophy:
 
-## 🏡 HOUSE IN HAND 🖐️🏠 ##  
+## 🏡 HOUSE IN HAND 🖐️ ##  
   몸이 불편한 이들을 위한 손 동작 인식을 사용한 홈 디바이스 제어 시스템
   
   
@@ -16,13 +16,13 @@
 Based on the OpenCV library, we will implement a system that recognizes the number of fingers that is registered in advance through webcam footage and operates modules connected to raspberry Pi according to the number of fingers or uses smartphone features via Bluetooth communication.
  
  
-  ###        Hand shape example
+  ### Hand shape example
 
-  -   finger one : control light (Led module)
+  -   **Finger one : control light (Led module)
     
-  -   finger two : close the window (Servomotor module) 
+  -   **Finger two : close the window (Servomotor module) 
    
-  -   finger three : emergency call to family or 119
+  -   **Finger three : emergency call to family or 119
  
  
 ## :computer: Component
@@ -36,6 +36,9 @@ Based on the OpenCV library, we will implement a system that recognizes the numb
 
 
 ## 📁 Usage library
+
+ - 손가락 인식을 위한 OPENCV 
+ - 긴급 연락을 위한 Twilio API 
 
 ## ❤️ System explain
 
