@@ -46,8 +46,6 @@ io.sockets.on("connection", function(socket) {
                 status: status
             });
         }
-
-        console.log("웨우");
     });
 
     socket.on("test", function(data) {
