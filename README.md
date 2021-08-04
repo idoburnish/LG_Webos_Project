@@ -8,12 +8,12 @@
 
 ## 💡 Topic Selection Background
 
-  The elderly and disabled can face many difficult situations when they are home alone. Family may not be able to stay with them 24 hours a day. In the face of an aging society  where the number of elderly people is increasing, welfare environments for the elderly and the disabled should be provided. Therefore, we have developed a system that allows them to operate functionality in their house with simple hand movements and to escape from emergency situations.
+### The elderly and disabled can face many difficult situations when they are home alone. Family may not be able to stay with them 24 hours a day. In the face of an aging society  where the number of elderly people is increasing, welfare environments for the elderly and the disabled should be provided. Therefore, we have developed a system that allows them to operate functionality in their house with simple hand movements and to escape from emergency situations.
 
 ## :pushpin: Functionality
 
 
-#### Based on the OpenCV library, we will implement a system that recognizes the number of fingers that is registered in advance through webcam footage and operates modules connected to raspberry Pi according to the number of fingers or uses smartphone features via Bluetooth communication.
+### Based on the OpenCV library, we will implement a system that recognizes the number of fingers that is registered in advance through webcam footage and operates modules connected to raspberry Pi according to the number of fingers or uses smartphone features via Bluetooth communication.
 
   ### Hand shape example
 
