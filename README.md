@@ -1,4 +1,4 @@
-## 2021 LG Webos Internship ## 
+## 2021 LG Webos Internship
 ---
 
 # House in Hand 🏠 #
