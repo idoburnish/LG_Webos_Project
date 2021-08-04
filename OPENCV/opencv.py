@@ -6,6 +6,11 @@ import socket
 import sys
 import socketio
 import json
+import time
+import speech_recognition as sr
+from gtts import gTTS
+import playsound
+import winsound as sd
 
 # cascade를 사용하여 얼굴검출하여 얼굴부분 제거
 # 검출된 얼굴 영역을 기준으로 일정 영역의 픽셀을 검은색으로 바꿈
@@ -257,6 +262,25 @@ def process(img_bgr, debug):
   
   return img_result, cnt
 
+
+def LED(text):
+     tts = gTTS(text=text, lang='en-us') 
+     filename='LED.mp3'
+     tts.save(filename) 
+     playsound.playsound(filename)
+
+def WIN(text):
+     tts = gTTS(text=text, lang='en-us') 
+     filename='WIN.mp3'
+     tts.save(filename) 
+     playsound.playsound(filename)
+
+def SMS(text):
+     tts = gTTS(text=text, lang='en-us') 
+     filename='SMS.mp3'
+     tts.save(filename) 
+     playsound.playsound(filename)
+
 current_file_path = os.path.dirname(os.path.realpath(__file__))
 cascade = cv.CascadeClassifier(cv.samples.findFile("haarcascade_frontalface_alt.xml"))
 
@@ -264,13 +288,9 @@ cap = cv.VideoCapture(0,cv.CAP_DSHOW)
 
 flag = 0
 
-#URL = "http://3.35.107.196:5000"
-# URL = "http://www.naver.com"
-
 Sockio = socketio.Client()
 Sockio.connect('http://3.35.107.196:5000')
 print('Connected!!  My sid : ', Sockio.sid)
-
 
 while True:
 
@@ -285,18 +305,26 @@ while True:
   if key== 27:
       break
   
-  if (flag != counts) and (counts!=0):
+  if (flag != counts) and (counts>0) and (counts<4) :
     dataf = {'success':True, 'numbers':counts}
     dataj = json.dumps(dataf)
     print(dataj)
 
     Sockio.emit('finger_number',dataj)
-    
     flag = counts
+
+    if counts== 1 :
+      LED("Finger 1 is recognized. Control the LED.")
+    elif counts == 2 :
+      WIN("Finger 2 is recognized. Control the Window.")
+    else :
+      playsound.playsound("Siren.mp3")
+      SMS("Finger 3 is recognized. Sends an emergency message.")
+
+    time.sleep(1)
 
   cv.imshow("Result", img_result)
   
-
 
 # cap객체 해제, 생성한 윈도우 제거
 cap.release()
@@ -304,5 +332,3 @@ cv.destroyAllWindows()
 
 # 소켓 연결 끊기
 Sockio.disconnect()
-
-# python opencv.py
