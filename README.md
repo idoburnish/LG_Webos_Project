@@ -18,11 +18,11 @@ Based on the OpenCV library, we will implement a system that recognizes the numb
  
   ### Hand shape example
 
-  -   **Finger one : control light (Led module)
+  -   **Finger one** : control light (Led module)
     
-  -   **Finger two : close the window (Servomotor module) 
+  -   **Finger two** : close the window (Servomotor module) 
    
-  -   **Finger three : emergency call to family or 119
+  -   **Finger three** : emergency call to family or 119
  
  
 ## :computer: Component
