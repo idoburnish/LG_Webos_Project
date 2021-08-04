@@ -262,24 +262,33 @@ def process(img_bgr, debug):
   
   return img_result, cnt
 
+LED_num = 0
+WIN_num = 0
+SMS_num = 0
 
 def LED(text):
-     tts = gTTS(text=text, lang='en-us') 
-     filename='LED.mp3'
+     tts = gTTS(text=text, lang='en-us')
+     global LED_num
+     filename = 'LED' + str(LED_num) + '.mp3'     
      tts.save(filename) 
      playsound.playsound(filename)
+     LED_num = LED_num + 1     
 
 def WIN(text):
      tts = gTTS(text=text, lang='en-us') 
-     filename='WIN.mp3'
+     global WIN_num
+     filename = 'WIN' + str(WIN_num) + '.mp3'
      tts.save(filename) 
      playsound.playsound(filename)
+     WIN_num = WIN_num + 1
 
 def SMS(text):
      tts = gTTS(text=text, lang='en-us') 
-     filename='SMS.mp3'
+     global SMS_num
+     filename = 'SMS' + str(SMS_num) + '.mp3'
      tts.save(filename) 
      playsound.playsound(filename)
+     SMS_num = SMS_num + 1
 
 current_file_path = os.path.dirname(os.path.realpath(__file__))
 cascade = cv.CascadeClassifier(cv.samples.findFile("haarcascade_frontalface_alt.xml"))
@@ -309,17 +318,20 @@ while True:
     dataf = {'success':True, 'numbers':counts}
     dataj = json.dumps(dataf)
     print(dataj)
-
-    Sockio.emit('finger_number',dataj)
-    flag = counts
-
+    
     if counts== 1 :
       LED("Finger 1 is recognized. Control the LED.")
     elif counts == 2 :
       WIN("Finger 2 is recognized. Control the Window.")
     else :
+      Sockio.emit('finger_number',dataj)
       playsound.playsound("Siren.mp3")
       SMS("Finger 3 is recognized. Sends an emergency message.")
+
+    if counts<3 :
+      Sockio.emit('finger_number',dataj)
+
+    flag = counts
 
     time.sleep(1)
 
