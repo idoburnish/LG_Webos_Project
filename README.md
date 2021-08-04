@@ -13,9 +13,8 @@
 ## :pushpin: Functionality
 
 
-Based on the OpenCV library, we will implement a system that recognizes the number of fingers that is registered in advance through webcam footage and operates modules connected to raspberry Pi according to the number of fingers or uses smartphone features via Bluetooth communication.
- 
- 
+#### Based on the OpenCV library, we will implement a system that recognizes the number of fingers that is registered in advance through webcam footage and operates modules connected to raspberry Pi according to the number of fingers or uses smartphone features via Bluetooth communication.
+
   ### Hand shape example
 
   -   **Finger one** : control light (Led module)
