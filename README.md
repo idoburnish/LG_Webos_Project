@@ -16,8 +16,11 @@
  
  
  Hand shape example
+ 
     -   :point_up: finger one – control light (Led module)
+    
     -   :v: finger two – close the window (Servomotor module) 
+    
     -   finger three – emergency call to family or 119
 
 ## :computer: Component
