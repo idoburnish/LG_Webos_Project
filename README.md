@@ -21,20 +21,11 @@ Based on the OpenCV library, we will implement a system that recognizes the numb
     
   -   **Finger two** : close the window (Servomotor module) 
    
-  -   **Finger three** : emergency call to family or 119
+  -   **Finger three** : emergency call to family or 119 (Twilio API)
  
  
-## :computer: Component
 
- - Socket io 통신을 위한 AWS server
- - WebOS 설치 RaspberryPi 4
- - 기능 작동 여부 알림을 위한 Web App
- - 모듈 제어를 위한 RaspberryPi 4
- - Server Motor, LED, breadboard
- - Webcam
-
-
-## ❤️ System architecture
+## :computer: System architecture
 
 ![image](https://user-images.githubusercontent.com/69456626/128503155-da33096e-6ef3-4435-8b77-a67710f2f435.png)
 
@@ -47,11 +38,23 @@ Based on the OpenCV library, we will implement a system that recognizes the numb
     - The webOS screen show the number of fingers recognized and the changing home environment.
     - Additionally, the contents of the screen are printed in TTS(Text-to-Speech)
 
+## ❤️ Component
+
+ - AWS server for Socketio communication
+ - RaspberryPi 4 for WebOS installation
+ - Web App for Notification of Functionality
+ - RaspberryPi 4 for module control
+ - Server Motor, LED, breadboard
+ - Webcam
+
 
 ## 📁 Usage library
 
- - 손가락 인식을 위한 OPENCV 
- - 긴급 연락을 위한 Twilio API 
- - 통신을 위한 socket.io
+ - OPENCV for finger recognition
+ - Twilio API for emergency
+ - socket.io for communications
 
 ## 🧸 Demo
+![손가락 인식 사진](https://user-images.githubusercontent.com/72252806/128503668-fd23a40f-ee4d-4bdc-afa4-1a9dfe065000.png)
+![집 내부](https://user-images.githubusercontent.com/72252806/128503724-0b843b7e-e039-4eb9-981a-e8924b66f018.png)
+
