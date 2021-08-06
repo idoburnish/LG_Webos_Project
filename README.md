@@ -36,7 +36,8 @@ Based on the OpenCV library, we will implement a system that recognizes the numb
 
 ## ❤️ System architecture
 
-![image](https://user-images.githubusercontent.com/69456626/128502959-403aa2af-c78d-417a-971c-934bc3267eb7.png)
+![image](https://user-images.githubusercontent.com/69456626/128503155-da33096e-6ef3-4435-8b77-a67710f2f435.png)
+
 1) Recognize the user's finger count with webcam and send it to the AWS server via socket.io.
 2) The server sends the number of fingers received to two raspberry Pi via socket.io.
 3) The first raspberry Pi controls the house.
