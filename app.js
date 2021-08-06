@@ -21,8 +21,8 @@ io.sockets.on("connection", function(socket) {
         finger = JSON.parse(data).numbers;
 
         if (finger == 1) {  // 손가락 1일 경우
-            window_count += 1;
-            var status = window_count % 2 ;  // LED status: 1(open)/0(close)
+            LED_count += 1;
+            var status = LED_count % 2; // LED status: 1(on)/0(off)
             console.log("finger: " + finger + " status: " + status);
             io.sockets.emit("finger_send", {
                 fingerNum : finger,
@@ -30,8 +30,8 @@ io.sockets.on("connection", function(socket) {
             });
         }
         else if (finger == 2) { //손가락 2일 경우
-            LED_count += 1;
-            var status = LED_count % 2; // window status: 1(on)/0(off)
+            window_count += 1;
+            var status = window_count % 2 ;  // window status: 1(open)/0(close)
             console.log("finger: " + finger + " status: " + status);
             io.sockets.emit("finger_send", {
                 fingerNum : finger,
